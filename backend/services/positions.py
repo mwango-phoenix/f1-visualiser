@@ -44,10 +44,6 @@ def fetch_raw_positions(
         )
         raw_positions[num] = df
 
-    for num, df in raw_positions.items():
-        print(f"[positions] driver {num}: {len(df)} samples, "
-              f"range {df['date'].min()} -> {df['date'].max()}")
-
     if not raw_positions:
         raise HTTPException(404, "No position data found for any driver in this window.")
 

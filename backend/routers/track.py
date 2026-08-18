@@ -63,9 +63,6 @@ def get_track_data(
     driver_meta = resolve_drivers(session_key, drivers)
     driver_numbers = list(driver_meta.keys())
 
-    print(f"[track-data] anchor driver = {driver_numbers[0]} "
-          f"({driver_meta[driver_numbers[0]]['name']}), all drivers = {driver_numbers}")
-
     time_start, time_end = resolve_time_window(
         session_key, driver_numbers[0], lap_start, lap_end
     )
@@ -76,9 +73,6 @@ def get_track_data(
 
     # get frame count
     n_frames = len(next(iter(resampled.values())))
-    for num, positions in resampled.items():
-        print(f"[track] pre-response driver {num}: positions[0]={positions[0]}, "
-              f"positions[300]={positions[300] if len(positions) > 300 else 'n/a'}")
 
     return TrackDataResponse(
         session_key= session_key,
