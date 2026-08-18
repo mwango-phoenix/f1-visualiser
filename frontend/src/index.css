@@ -1,0 +1,75 @@
+:root {
+  /* --- Color tokens ------------------------------------------------- */
+  --c-asphalt:      #0b0d10; /* page background, near-black tarmac */
+  --c-surface:       #15181c; /* panel background */
+  --c-surface-raised:#1c2126; /* raised panel / hover */
+  --c-hairline:      #262c33; /* dividers, borders */
+  --c-track-white:   #e9e7e1; /* primary text, track line */
+  --c-mute:          #7c848d; /* secondary text */
+  --c-signal-amber:  #ff9f1c; /* primary accent — live / active state */
+  --c-telemetry-green:#00d26a; /* success / positive readouts, used sparingly */
+  --c-flag-red:      #ff4d4d; /* errors */
+
+  /* --- Type ----------------------------------------------------------*/
+  --f-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-body: "Inter", -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* --- Layout ----------------------------------------------------------*/
+  --radius: 3px;
+  --panel-pad: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--c-asphalt);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(233, 231, 225, 0.02) 40px
+    );
+  color: var(--c-track-white);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--c-signal-amber);
+  color: var(--c-asphalt);
+}
+
+/* Focus states must stay visible everywhere — this is a control room, not
+   a marketing page. */
+:focus-visible {
+  outline: 2px solid var(--c-signal-amber);
+  outline-offset: 2px;
+}
+
+.mono-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-mute);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,42 @@
+.driver-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px var(--panel-pad);
+  border-bottom: 1px solid var(--c-hairline);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--c-track-white);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.legend-item .swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--driver-color);
+}
+
+.legend-item.hidden {
+  color: var(--c-mute);
+  opacity: 0.5;
+}
+
+.legend-item.hidden .swatch {
+  background: var(--c-mute);
+}
+
+.legend-item:hover {
+  border-color: var(--c-hairline);
+}

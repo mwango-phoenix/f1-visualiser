@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python bytecode/cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables / secrets
+.env
+.env.local
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/

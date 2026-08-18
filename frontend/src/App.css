@@ -1,0 +1,85 @@
+.app-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--c-hairline);
+  background: var(--c-surface);
+}
+
+.app-mark {
+  color: var(--c-signal-amber);
+  font-size: 16px;
+}
+
+.app-header h1 {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.header-sub {
+  margin-left: 4px;
+}
+
+.app-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.control-rail {
+  width: 300px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--c-hairline);
+  background: var(--c-surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  padding: var(--panel-pad);
+  border-bottom: 1px solid var(--c-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-title {
+  margin: 0;
+}
+
+.canvas-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.canvas-area {
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 860px) {
+  .app-body {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .control-rail {
+    width: 100%;
+    border-right: none;
+  }
+  .canvas-area {
+    min-height: 320px;
+  }
+}

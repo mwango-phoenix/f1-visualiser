@@ -1,0 +1,40 @@
+.race-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field input,
+.field select {
+  background: var(--c-surface-raised);
+  border: 1px solid var(--c-hairline);
+  border-radius: var(--radius);
+  color: var(--c-track-white);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  padding: 9px 10px;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--c-signal-amber);
+}
+
+.field select:disabled,
+.field input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.field-error {
+  margin: 0;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--c-flag-red);
+}

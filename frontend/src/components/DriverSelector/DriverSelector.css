@@ -1,0 +1,44 @@
+.driver-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.empty-hint {
+  margin: 0;
+}
+
+.driver-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--c-surface-raised);
+  border: 1px solid var(--c-hairline);
+  border-radius: var(--radius);
+  color: var(--c-mute);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+.driver-chip:hover {
+  border-color: var(--driver-color, var(--c-mute));
+}
+
+.driver-chip.active {
+  color: var(--c-track-white);
+  border-color: var(--driver-color, var(--c-signal-amber));
+  box-shadow: inset 0 0 0 1px var(--driver-color, var(--c-signal-amber));
+}
+
+.driver-chip .swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--driver-color, var(--c-mute));
+  flex-shrink: 0;
+}
