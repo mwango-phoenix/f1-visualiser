@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from models.schemas import SessionInfo, DriverInfo, TrackDataResponse, TrackPoint, DriverFrame
+from models.schemas import SessionInfo, DriverInfo, TrackDataResponse, TrackPoint, DriverTimeline
 from services.openf1 import get_sessions, get_drivers, resolve_session_key, resolve_drivers, _driver_color
 from services.laps import resolve_time_window
 from services.positions import fetch_raw_positions, resample_positions, build_track_outline
@@ -7,7 +7,9 @@ from config import DEFAULT_RESAMPLE_HZ
  
 router = APIRouter()
  
-
+@router.get("/health")
+def health():
+    return {"status": "ok"}
 
 @router.get("/sessions", response_model=list[SessionInfo])
 def sessions(

@@ -28,7 +28,7 @@ class TrackPoint(BaseModel):
     y: float
 
 
-class DriverFrame(BaseModel):
+class DriverTimeline(BaseModel):
     # Each driver gets a flat list of [x, y] pairs, one per frame.
     driver_number: int
     name_acronym: str
@@ -45,4 +45,4 @@ class TrackDataResponse(BaseModel):
     # The track outline
     track: list[TrackPoint]
     # One entry per driver.
-    drivers: list[DriverFrame]
+    drivers: list[DriverTimeline]
