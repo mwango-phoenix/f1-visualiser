@@ -84,7 +84,7 @@ def get_track_data(
         n_frames = n_frames,
         track = [TrackPoint(x=float(x), y=float(y)) for x, y in zip(track_x, track_y)],
         drivers = [
-            DriverFrame(
+            DriverTimeline(
                 driver_number= num,
                 name_acronym=  driver_meta[num]["name"],
                 color=         driver_meta[num]["color"],

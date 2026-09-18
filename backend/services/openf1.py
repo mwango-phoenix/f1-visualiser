@@ -20,15 +20,29 @@ def get_drivers(**params):   return _fetch("drivers",   **params)
 def get_laps(**params):      return _fetch("laps",      **params)
 
 def get_location(session_key, driver_number, time_start, time_end):
-    qs = (
-        f"session_key={session_key}"
-        f"&driver_number={driver_number}"
-        f"&date>={time_start}"
-        f"&date<={time_end}"
-    )
-    r = requests.get(f"{OPENF1_BASE_URL}/location?{qs}", timeout=30)
-    r.raise_for_status()
-    return r.json()
+    try:
+        r = requests.get(
+            f"{OPENF1_BASE_URL}/location",
+            params={
+                "session_key": session_key,
+                "driver_number": driver_number,
+                "date>": time_start,
+                "date<": time_end,
+            },
+            timeout=30,
+        )
+        r.raise_for_status()
+        return r.json()
+    except requests.Timeout:
+        raise HTTPException(504, "OpenF1 timed out fetching /location")
+    except requests.HTTPError as e:
+        status = e.response.status_code if e.response is not None else 502
+        if status == 429:
+            raise HTTPException(
+                503,
+                "OpenF1 rate limit reached while fetching location data. Try again shortly.",
+            )
+        raise HTTPException(502, f"OpenF1 error fetching /location: {e}")
 
 # ---------------------------------------------------------------------------
 # Domain helpers
